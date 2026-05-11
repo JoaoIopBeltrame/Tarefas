@@ -1,4 +1,3 @@
-# Mini coletor de dados, ainda vou melhorar ele///// AINDA FALTA MELGHORAR ---- ESTA DANDO ERROS
 import os
 import time
 

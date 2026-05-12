@@ -8,11 +8,7 @@ Curitiba, Paraná - Brasil
 
 GitHub: @JoaoIopBeltrame
 
-Licença
-
 Este projeto é de código aberto e disponível para fins educacionais.
-
-Contribuições
 
 Sugestões e melhorias são bem-vindas! Sinta-se livre para abrir issues ou enviar pull requests.
 

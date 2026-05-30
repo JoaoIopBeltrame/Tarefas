@@ -1,4 +1,4 @@
-# add o negocio de selecionar onde vai as embarcações 
+https://github.com/JoaoIopBeltrame/Tarefas/blob/main/Tarefas/PjBL%20-%20Batalha-Naval/PjBL%20-%20Batalha-Naval.py# add o negocio de selecionar onde vai as embarcações 
 #   add tabela ASCII, cores e etc
 # add tratamento de desenhos no termnal
 # add insert para saber indice em que os troços vao ficar 

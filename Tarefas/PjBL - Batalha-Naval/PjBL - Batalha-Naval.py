@@ -1,5 +1,5 @@
 # add visuais de interface no estilo daquele do pedra pael tesoura e se possivel deixar as o output do terminal mais foda, tipo, arrumado, colorido e com uns desenho e pa
-
+#e como desenhos
 
 
 

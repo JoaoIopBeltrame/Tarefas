@@ -1,267 +1,194 @@
-import sys
-import os
-import time
-import random
+import os, sys, time, random
+
+# Cores e Estilos ANSI
 AZ   = "\033[34m"; VERD = "\033[32m"; VERM = "\033[31m"
 CI   = "\033[36m"; AMA  = "\033[33m"; ROSA = "\033[35m"
 NEG  = "\033[1m";  RE   = "\033[0m"
 HIDE = "\033[?25l"; SHOW = "\033[?25h"
+
+# Temas do Sistema
 MOLDURA = AZ + NEG
 TITULO  = AMA + NEG
 TEXTO   = CI
 NUMERO  = VERM + NEG
 VALOR   = VERD + NEG
 
+#Global pros nomes
 NAVIOS_INDICE = ['', 'destroier', 'submarino', 'contratorpedeiro', 'Navio-tanque', 'Porta-aviões']
-#           0 ou mar       1             2               3               4               5
-
+#               0 ou mar       1             2             3               4               5
 def verInformacao():
-    print(f"""{CI}
-    =============== BATALHA NAVAL ===============
-    1. Tabuleiro 10x10 (linhas A-J, colunas 1-10).
-    2. Posicione seus navios na horizontal ou vertical.
-    3. Navios nao podem se sobrepor nem sair da grade.
-    4. A cada turno voce atira em uma coordenada (ex: B5).
-    5. Resposta: AGUA (errou) ou ACERTOU (atingiu).
-    6. Um navio so AFUNDA quando todas as casas dele sao atingidas.
-    7. Vence quem afundar toda a frota inimiga primeiro.
-    ============================================= {RE}""")
-    print(f'''{HIDE}{MOLDURA}    ╔═══════════════════════════════════════════════════════╗                      
-    ║                                                       ║       
-    ║  {TITULO}EMBARCAÇÕES{MOLDURA}                             {TITULO}ESPAÇAMENTO{MOLDURA}  ║                                             
-    ║  {NUMERO}1{TEXTO}: Adicionar Porta-aviões                   {VALOR}5{MOLDURA}        ║
-    ║  {NUMERO}2{TEXTO}: Adicionar Navio-tanque                   {VALOR}4{MOLDURA}        ║
-    ║  {NUMERO}3{TEXTO}: Adicionar Contratorpedeiro               {VALOR}3{MOLDURA}        ║                                        
-    ║  {NUMERO}4{TEXTO}: Adicionar Submarino                      {VALOR}2{MOLDURA}        ║                                        
-    ║  {NUMERO}5{TEXTO}: Adicionar Destroier                      {VALOR}1{MOLDURA}        ║                                    
-    ║                                                       ║
-    ╚═══════════════════════════════════════════════════════╝{RE}{SHOW}''')
-
-def cleanTerm():
-    os.system('cls' if os.name == 'nt' else 'clear')
+    print(f"""
+    {MOLDURA}                      _________[{TITULO}⚓ BATALHA NAVAL{MOLDURA}]_________
+                        /                                  \\
+                        /       {TITULO}INSTRUÇÕES DE COMBATE{MOLDURA}        \\
+                    /                                      \\
+    ___________     /  {TEXTO}1. Tabuleiro 10x10 (A-J, colunas 1-10){MOLDURA}  \\
+    [___________]___/   {TEXTO}2. Posicione na horizontal/vertical. {MOLDURA}   \\
+    \\                  {TEXTO}3. Não pode se sobrepor ou sair.     {MOLDURA}    \\
+    \\                 {TEXTO}4. Atire via coordenada (ex: B5).    {MOLDURA}     \\
+        \\                {TEXTO}5. Resposta: {VALOR}ÁGUA{TEXTO} ou {VERM}ACERTOU{TEXTO}.         {MOLDURA}      \\
+        \\               {TEXTO}6. Só afunda se atingir todo o navio.{MOLDURA}       \\
+    ______\\_____________ {TEXTO}7. Vence quem derrubar a frota 1º.   {MOLDURA}________\\_______
+    \\                                                                         /
+    \\   {TITULO}🪖 FROTAS DISPONÍVEIS{MOLDURA}          {TITULO}📐 TAMANHO{MOLDURA}        {TITULO}⚙️ ESPECIFICAÇÕES{MOLDURA}       /
+    \\                                                                     /
+    \\  {NUMERO}[1]{TEXTO} Porta-aviões                {VALOR}5 Casas{TEXTO}        Unidade de Elite       /
+        \\ {NUMERO}[2]{TEXTO} Navio-tanque                {VALOR}4 Casas{TEXTO}        Carga Pesada          /
+        \\{NUMERO}[3]{TEXTO} Contratorpedeiro            {VALOR}3 Casas{TEXTO}        Escolta Rápida       /
+        \\{NUMERO}[4]{TEXTO} Submarino                   {VALOR}2 Casas{TEXTO}        Ataque Furtivo      /
+        \\{NUMERO}[5]{TEXTO} Destroier                   {VALOR}1 Casa{TEXTO}         Ataque Rápido      /
+            \\_____________________________________________________________/
+    {AZ}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{RE}""")
 
 def palavraAnimada(palavra='Voltando'):
     sys.stdout.write(HIDE + AMA)
     for _ in range(3):
-        cleanTerm()
+        os.system('cls' if os.name == 'nt' else 'clear') 
         print(palavra, end='', flush= True)
         for _ in range(3):
             print('.', end='',  flush= True)
             time.sleep(0.2)
     sys.stdout.write(SHOW + RE)
 
+def opcaoVoltar():
+    while True:
+        voltar = input('Deseja voltar (z) para nao e ENTER para continuar\n> ').strip().capitalize()
+        if voltar == 'z':
+            return False
+        elif voltar == '':
+            return True
+        else:
+            print('Voce so inferiu uma das ergras')
+            time.sleep(1)
+            continue
+
 def jogarNovamente():
     while True:
-        jogarSN = input('Deseja jogar novamente (s) para sim e (n) para não\n> ').strip().capitalize()
-        if jogarSN in ['S','Sim']:
+        jogar = input('Gostaria de jogar de novo? (S) para sim (N) para não\n> ').strip().capitalize()
+        if jogar in ['S', 'Sim']:
             return True
-        elif jogarSN in ['N', 'Nao', 'Não']:
+        elif jogar in ['N', 'Não', 'Nao']:
             return False
         else:
-            print('Digite apenas as  opções validdas')
-            continue                     
-        
-def voltarOpcao():
-    while True:
-        voltar = input('Deseja voltar? (z) para voltar e (ENTER) para continuar\n> ').strip().lower()
-        if voltar == '':
-            return None
-        elif voltar == 'z':
-            return False         
-        else:
-            print('Digite so coisa valida')
+            print('Voce so inferiu uma das ergras')
+            time.sleep(1)
+            continue
 
-def tabuleiroCPU():
-    matrizInimiga = [[0 for _ in range(10)] for _ in range(10)]
+def criaTabuleiroPlayer():
+    tabuleiroPlayer = [[0] * 10 for _ in range(10)]
     
-    for tamanhoCasa in [1, 2, 3, 4, 5]:
-        
-        while True:
-            casaOcupada = True
-            
-            randomLinha = random.randint(0, 9)
-            randomColuna = random.randint(0, 9)
-            randomPosicao = random.randint(0, 1) # 0 Vertical 1 Horizontal
-            if randomPosicao == 0 and randomLinha + tamanhoCasa > 10:
-                continue
-            if randomPosicao == 1 and randomColuna + tamanhoCasa > 10:
-                continue
-            for sobreposicao in range(tamanhoCasa):
-                if randomPosicao == 0:
-                    if matrizInimiga[randomLinha + sobreposicao][randomColuna] != 0:
-                        casaOcupada = False
-                else:
-                    if matrizInimiga[randomLinha][randomColuna + sobreposicao] != 0:
-                        casaOcupada = False
-            if not casaOcupada:
-                continue
-            for porCasa in range(tamanhoCasa):
-                if randomPosicao == 0:
-                    matrizInimiga[randomLinha + porCasa][randomColuna] = tamanhoCasa  
-                else:
-                    matrizInimiga[randomLinha][randomColuna + porCasa] = tamanhoCasa  
-            break
-    return matrizInimiga
+    return tabuleiroPlayer
 
-def tabuleiroUsuario(): 
-    matrizFinalUsuario = []
-    for loopMa in range(10):
-        matrizLinha = []
-        for loopMe in range(10):
-            matrizLinha.append(0)
-        matrizFinalUsuario.append(matrizLinha)
-    
-    return matrizFinalUsuario
-
-def mostrarTabuleroUsuario(matrizFinalUsuario):
+def mostrarTabulero(tabuleiroLimpo):
     print(f'\n  ' + '   '.join([chr(65 + i) for i in range(10)]))  
     print(f'  {AZ}╔' + '═' * 40 + f'{RE}')
-    for numero, matriz in enumerate(matrizFinalUsuario):
+    for numero, matriz in enumerate(tabuleiroLimpo):
         print(f'\n {numero}' + '║   ' + '   '.join(map(str, matriz)))
 
-def porEmbarcacao(matrizFinalUsuario, escolheNavio):
-    escolheNavioInt = int(escolheNavio)
-    porIndice = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-   
-    #parte em que vai mostrar em quanto a posição excede 
+def criaTabuleiroCPU():
+    matrizInimiga = [[0 for _ in range(10)] for _ in range(10)]
+
+    for tamanhoBarco in [1, 2, 3, 4, 5]:
+        while True:
+            lugarOcupado = False
+
+            linha = random.randint(0, 9)
+            coluna = random.randint(0, 9)
+            sentido = random.randint(0, 1) #0 horizontal 1 vertical
+
+            if sentido == 0 and coluna + tamanhoBarco > 10:
+                continue
+            if sentido == 1 and linha + tamanhoBarco > 10:
+                continue
+
+            for casa in range(tamanhoBarco):
+                if sentido == 0:
+                    if matrizInimiga[linha][coluna + casa] != 0:
+                        lugarOcupado = True
+                else:
+                    if matrizInimiga[linha + casa][coluna] != 0:
+                        lugarOcupado = True
+            if lugarOcupado:
+                continue
+            
+            if sentido == 0:
+                for porColuna in range(tamanhoBarco):
+                    matrizInimiga[linha][coluna + porColuna] = tamanhoBarco
+            else:
+                for porLinha in range(tamanhoBarco):
+                    matrizInimiga[linha + porLinha][coluna] = tamanhoBarco
+            break
+    return matrizInimiga
+    
+def aindaTemNaio(tabuleiro):
+    for num in [1, 2, 3, 4, 5]:
+        for indice in tabuleiro:
+            if num in tabuleiro:
+                return False
+    return True
+
+def porNavio(tabuleiroUsuario, escolheNavio):
+    escolheNavio_INT = int(escolheNavio)
+    indicePermitido = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     while True:
-        perguntaSentido = input('Digite (H) horizontal (V) vertical\n> ').strip().capitalize()
-        if perguntaSentido in ['H', 'Horizontal']:
-            valorPosi = 1
-        elif perguntaSentido in ['V', 'Vertical']:
-            valorPosi = 0
-        else:
-            print('Digite uma palara  valida')
+        posicao = input('Selecione (H) para horizontal e (V) para vertical\n> ').strip().capitalize()
+        if posicao in ['H', 'Horizontal']:
+            valorPosicao = 0
+        elif posicao in ['V', 'Vertical']:
+            valorPosicao = 1
+        else: 
+            print('Digita so as opcaoes validas')
             continue
         break
-         
-    
+
     while True:
-        casaOcupada = False
-        perguntaLinha = input('Digite uma linha\n> ')
-        perguntaColuna = input('Digite uma coluna\n> ')
-                
-        if not (perguntaColuna.isdigit() and perguntaLinha.isdigit()):
-            print('Digite apenas numeros')
-            continue
-            
-        perguntaLinhaInt = int(perguntaLinha)
-        perguntaColunaInt = int(perguntaColuna)
-            
-        #subtração
-        resultadoColuna = (perguntaColunaInt + escolheNavioInt) - 10   
-        resultadoLinha = (perguntaLinhaInt + escolheNavioInt) - 10      
-            
-        if not (perguntaColunaInt in porIndice and perguntaLinhaInt in porIndice):  
-            print('Digite apenas um numero de 0 a 9')
+        lugarOcupado = False
+        try:
+            linha = int(input('Digite uma linha (0, 9)\n> '))
+            coluna = int(input('Digite uma linha (0, 9)\n> '))
+        except ValueError:
+            print('Digite apenas numeros inteiros')
             continue
         
-        if  valorPosi == 0 and perguntaLinhaInt + escolheNavioInt > 10:   
-            print(f'O limite da coluna ira exceder em {resultadoColuna}')
-            time.sleep(1.5)
+        if not (0 <= linha <= 9 and 0 <= coluna <= 9):
+            print('Digite apenas numeros dentro do limite')
             continue
-        if  valorPosi == 1 and perguntaColunaInt + escolheNavioInt > 10:   
-            print(f'O limite da linha ira exceder em {resultadoLinha}')
-            time.sleep(1.5)
+
+        if valorPosicao == 0 and coluna + escolheNavio_INT > 10:
+            print(f'O limite da LINHA será excedido em {(coluna + escolheNavioInt) - 10} casas.')
             continue
-        
-
-        for i in range(escolheNavioInt):       
-            if valorPosi == 1:                   
-                if matrizFinalUsuario[perguntaLinhaInt][perguntaColunaInt + i] != 0:
-                    casaOcupada = True           
-                if matrizFinalUsuario[perguntaLinhaInt + i][perguntaColunaInt] != 0:
-                    casaOcupada = True           
-
-        if casaOcupada:   
+        if valorPosicao == 1 and linha + escolheNavio_INT > 10:
+            print(f'O limite da LINHA será excedido em {(linha + escolheNavioInt) - 10} casas.')
             continue
         
-            
-        if valorPosi == 1:                      
-            print(f'{VERD}Modo Horizontal escolhido{RE}')
-            for k in range(escolheNavioInt):
-                matrizFinalUsuario[perguntaLinhaInt][perguntaColunaInt + k] = escolheNavioInt  
-        else:
-            print(f'{VERD}Modo Vertical escolhido{RE}')  
-            for i in range(escolheNavioInt):         
-                matrizFinalUsuario[perguntaLinhaInt + i][perguntaColunaInt] = escolheNavioInt   
-        return True   
+        for num in range(escolheNavio_INT):
+            if valorPosicao == 0 and tabuleiroUsuario[linha][coluna + num]!= 0:
+                lugarOcupado = True
+            else:
+                if tabuleiroUsuario[linha + num][coluna] != 0:
+                    lugarOcupado = True
+        
+        if lugarOcupado:
+            continue
+        
+        modo = 'Horzontal' if valorPosicao == 0 else 'Vertical'
+        print(f'{VERD}Modo {modo} aplicado com sucesso!{RE}')
 
-def barcoDestruido(matrizInimiga):
-    for numero in [1, 2, 3, 4, 5]:
-        for linha in matrizInimiga:
-            if numero in linha:
-                return False   
-    return True 
-
-def tiroUsuario(matrizInimiga, linha, coluna):
-    tipoNavio = matrizInimiga[linha][coluna]
-    if tipoNavio == 0:                       
-        print('Voce acertou a agua')
-        return None
-    navioAcerto = NAVIOS_INDICE[tipoNavio]
-    print(f'Voce acertou um navio {navioAcerto}')
-    if not barcoDestruido(matrizInimiga):   
-        print(f'{AMA}Há um pedaço restante do {navioAcerto}{RE}')
-    else:
-        print(f'{VERM}O {navioAcerto} foi totalmente destruido{RE}')
+        for posicao in range(escolheNavio_INT):
+            if valorPosicao == 0:
+                tabuleiroUsuario[linha][coluna + valorPosicao] = escolheNavio_INT
+            else:
+                tabuleiroUsuario[linha + valorPosicao][coluna] = escolheNavio_INT
     
-    matrizInimiga[linha][coluna] = 0        
+    return True
 
-def tiroCPU(matrizFinalUsuario):
-    tiroRandomLinha = random.randint(0, 9)
-    tiroRandomColuna = random.randint(0, 9)
-    randomTiroNaMatrz = matrizFinalUsuario[tiroRandomLinha][tiroRandomColuna]
-    if randomTiroNaMatrz == 0:
-        print('O inimigo acerttou a agua')
-    else:
-        nome = NAVIOS_INDICE[randomTiroNaMatrz]
-        print(f'O inimigo acertou {nome}')
-        matrizFinalUsuario[tiroRandomLinha][tiroRandomColuna] = 0
-    return matrizFinalUsuario
+    #fazer tratamento de coisas em ambos
 
 
 
 
 
-# def main():
 
 
-# if __name__ == '__main__':     
-#     main()
-
-
-
-def faseDeCombate(matrizUsuario):
-    #  criar a frota da CPU -> use tabuleiroCPU() e guarde numa variavel
-    #          ex: matrizInimiga = tabuleiroCPU()
-   
-    #  abrir o loop principal -> while True:
-    #          (tudo daqui pra baixo fica DENTRO do while)
-
-        # : mostrar o tabuleiro do jogador (mostrarTabuleroUsuario)
-        #          obs: se quiser, mostre tambem o que ja foi descoberto da CPU
-
-        # pedir a linha do tiro (input) e a coluna do tiro (input)
-
-        # validar o input (igual voce ja faz em porEmbarcacao):
-        #          - se nao for digito -> print erro + continue
-        #          - converter pra int
-        #          - se nao estiver entre 0 e 9 -> print erro + continue
-
-        # O JOGADOR ATIRA -> chame tiroUsuario(matrizInimiga, linha, coluna)
-
-        #  CHECAR VITORIA (ANTES da CPU atirar!):
-        #          - if barcoDestruido(matrizInimiga):
-        #                print "VITORIA"
-        #                break   (sai do loop)
-
-        #  A CPU ATIRA -> matrizUsuario = tiroCPU(matrizUsuario)
-        #          (guarde o retorno, igual fez no tiroUsuario)
-
-        #  CHECAR DERROTA:
-        #          - if barcoDestruido(matrizUsuario):
-        #                print "DERROTA"
-        #                break
 
 

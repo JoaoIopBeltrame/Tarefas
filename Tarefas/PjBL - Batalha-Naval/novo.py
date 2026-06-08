@@ -2,7 +2,6 @@ import sys
 import os
 import time
 import random
-
 AZ   = "\033[34m"; VERD = "\033[32m"; VERM = "\033[31m"
 CI   = "\033[36m"; AMA  = "\033[33m"; ROSA = "\033[35m"
 NEG  = "\033[1m";  RE   = "\033[0m"
@@ -58,16 +57,19 @@ def jogarNovamente():
             return True
         elif jogarSN in ['N', 'Nao', 'Não']:
             return False
-        continue
-
+        else:
+            print('Digite apenas as  opções validdas')
+            continue                     
+        
 def voltarOpcao():
     while True:
         voltar = input('Deseja voltar? (z) para voltar e (ENTER) para continuar\n> ').strip().lower()
         if voltar == '':
             return None
         elif voltar == 'z':
-            return False
-        continue
+            return False         
+        else:
+            print('Digite so coisa valida')
 
 def tabuleiroCPU():
     matrizInimiga = [[0 for _ in range(10)] for _ in range(10)]
@@ -80,12 +82,10 @@ def tabuleiroCPU():
             randomLinha = random.randint(0, 9)
             randomColuna = random.randint(0, 9)
             randomPosicao = random.randint(0, 1) # 0 Vertical 1 Horizontal
-
             if randomPosicao == 0 and randomLinha + tamanhoCasa > 10:
                 continue
             if randomPosicao == 1 and randomColuna + tamanhoCasa > 10:
                 continue
-
             for sobreposicao in range(tamanhoCasa):
                 if randomPosicao == 0:
                     if matrizInimiga[randomLinha + sobreposicao][randomColuna] != 0:
@@ -95,16 +95,15 @@ def tabuleiroCPU():
                         casaOcupada = False
             if not casaOcupada:
                 continue
-
             for porCasa in range(tamanhoCasa):
                 if randomPosicao == 0:
-                    matrizInimiga[randomLinha + porCasa][randomColuna] == porCasa
-                matrizInimiga[randomLinha][randomColuna + porCasa]
-        
-        break
+                    matrizInimiga[randomLinha + porCasa][randomColuna] = tamanhoCasa  
+                else:
+                    matrizInimiga[randomLinha][randomColuna + porCasa] = tamanhoCasa  
+            break
     return matrizInimiga
 
-def tabuleiroUsuario():
+def tabuleiroUsuario(): 
     matrizFinalUsuario = []
     for loopMa in range(10):
         matrizLinha = []
@@ -115,7 +114,7 @@ def tabuleiroUsuario():
     return matrizFinalUsuario
 
 def mostrarTabuleroUsuario(matrizFinalUsuario):
-    print(f'\n  ' + '   '.join([chr(65 + i) for i in range(10)]))
+    print(f'\n  ' + '   '.join([chr(65 + i) for i in range(10)]))  
     print(f'  {AZ}╔' + '═' * 40 + f'{RE}')
     for numero, matriz in enumerate(matrizFinalUsuario):
         print(f'\n {numero}' + '║   ' + '   '.join(map(str, matriz)))
@@ -123,11 +122,8 @@ def mostrarTabuleroUsuario(matrizFinalUsuario):
 def porEmbarcacao(matrizFinalUsuario, escolheNavio):
     escolheNavioInt = int(escolheNavio)
     porIndice = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    casaOcupada = True
    
-
     #parte em que vai mostrar em quanto a posição excede 
-
     while True:
         perguntaSentido = input('Digite (H) horizontal (V) vertical\n> ').strip().capitalize()
         if perguntaSentido in ['H', 'Horizontal']:
@@ -137,87 +133,135 @@ def porEmbarcacao(matrizFinalUsuario, escolheNavio):
         else:
             print('Digite uma palara  valida')
             continue
+        break
+         
     
     while True:
+        casaOcupada = False
         perguntaLinha = input('Digite uma linha\n> ')
         perguntaColuna = input('Digite uma coluna\n> ')
                 
-
         if not (perguntaColuna.isdigit() and perguntaLinha.isdigit()):
             print('Digite apenas numeros')
             continue
-
             
         perguntaLinhaInt = int(perguntaLinha)
         perguntaColunaInt = int(perguntaColuna)
             
         #subtração
-        resultadoColuna = (perguntaColunaInt + escolheNavio) - 10  
-        resultadoLinha = (perguntaLinhaInt + escolheNavio) - 10  
+        resultadoColuna = (perguntaColunaInt + escolheNavioInt) - 10   
+        resultadoLinha = (perguntaLinhaInt + escolheNavioInt) - 10      
             
-        if not (perguntaColuna in porIndice and perguntaLinha in porIndice):
+        if not (perguntaColunaInt in porIndice and perguntaLinhaInt in porIndice):  
             print('Digite apenas um numero de 0 a 9')
             continue
         
-        if  opcao == 0 and perguntaColunaInt + escolheNavio > 10:
+        if  valorPosi == 0 and perguntaLinhaInt + escolheNavioInt > 10:   
             print(f'O limite da coluna ira exceder em {resultadoColuna}')
             time.sleep(1.5)
             continue
-        if  opcao == 1 and perguntaLinhaInt + escolheNavio > 10:
+        if  valorPosi == 1 and perguntaColunaInt + escolheNavioInt > 10:   
             print(f'O limite da linha ira exceder em {resultadoLinha}')
             time.sleep(1.5)
             continue
         
-        for i in range(escolheNavio):
-            if opcao == 1:
-                matrizFinalUsuario[perguntaLinhaInt][perguntaColunaInt + i] != 0
-                nome = NOMES[escolheNavio]
-                print(f'O navio {nome} foi atingindo')
-                casaOcupada = False
-            
-            matrizFinalUsuario[perguntaLinhaInt + i][perguntaColunaInt] != 0
-            nome = NOMES[escolheNavio]
-            print(f'O navio {nome} foi atingindo')
-            casaOcupada = False
-        
-        if not casaOcupada:
+
+        for i in range(escolheNavioInt):       
+            if valorPosi == 1:                   
+                if matrizFinalUsuario[perguntaLinhaInt][perguntaColunaInt + i] != 0:
+                    casaOcupada = True           
+                if matrizFinalUsuario[perguntaLinhaInt + i][perguntaColunaInt] != 0:
+                    casaOcupada = True           
+
+        if casaOcupada:   
             continue
+        
             
-        if opcao == 1:
+        if valorPosi == 1:                      
             print(f'{VERD}Modo Horizontal escolhido{RE}')
             for k in range(escolheNavioInt):
-                matrizFinalUsuario[perguntaLinhaInt + k] = casasNavio
+                matrizFinalUsuario[perguntaLinhaInt][perguntaColunaInt + k] = escolheNavioInt  
+        else:
+            print(f'{VERD}Modo Vertical escolhido{RE}')  
+            for i in range(escolheNavioInt):         
+                matrizFinalUsuario[perguntaLinhaInt + i][perguntaColunaInt] = escolheNavioInt   
+        return True   
 
-        print(f'{VERD}Modo Vertical escolhido{RE}')
-        for i in range(casasNavio):
-            matriz10x10[porLinhaInt + i][porColunaInt] = casasNavio
+def barcoDestruido(matrizInimiga):
+    for numero in [1, 2, 3, 4, 5]:
+        for linha in matrizInimiga:
+            if numero in linha:
+                return False   
+    return True 
 
-    return True
+def tiroUsuario(matrizInimiga, linha, coluna):
+    tipoNavio = matrizInimiga[linha][coluna]
+    if tipoNavio == 0:                       
+        print('Voce acertou a agua')
+        return None
+    navioAcerto = NAVIOS_INDICE[tipoNavio]
+    print(f'Voce acertou um navio {navioAcerto}')
+    if not barcoDestruido(matrizInimiga):   
+        print(f'{AMA}Há um pedaço restante do {navioAcerto}{RE}')
+    else:
+        print(f'{VERM}O {navioAcerto} foi totalmente destruido{RE}')
+    
+    matrizInimiga[linha][coluna] = 0        
+
+def tiroCPU(matrizFinalUsuario):
+    tiroRandomLinha = random.randint(0, 9)
+    tiroRandomColuna = random.randint(0, 9)
+    randomTiroNaMatrz = matrizFinalUsuario[tiroRandomLinha][tiroRandomColuna]
+    if randomTiroNaMatrz == 0:
+        print('O inimigo acerttou a agua')
+    else:
+        nome = NAVIOS_INDICE[randomTiroNaMatrz]
+        print(f'O inimigo acertou {nome}')
+        matrizFinalUsuario[tiroRandomLinha][tiroRandomColuna] = 0
+    return matrizFinalUsuario
+
+
 
 
 
 # def main():
 
 
-
-
-
-# if __name__ == __main__():
+# if __name__ == '__main__':     
 #     main()
 
 
 
+def faseDeCombate(matrizUsuario):
+    #  criar a frota da CPU -> use tabuleiroCPU() e guarde numa variavel
+    #          ex: matrizInimiga = tabuleiroCPU()
+   
+    #  abrir o loop principal -> while True:
+    #          (tudo daqui pra baixo fica DENTRO do while)
 
+        # : mostrar o tabuleiro do jogador (mostrarTabuleroUsuario)
+        #          obs: se quiser, mostre tambem o que ja foi descoberto da CPU
 
+        # pedir a linha do tiro (input) e a coluna do tiro (input)
 
+        # validar o input (igual voce ja faz em porEmbarcacao):
+        #          - se nao for digito -> print erro + continue
+        #          - converter pra int
+        #          - se nao estiver entre 0 e 9 -> print erro + continue
 
+        # O JOGADOR ATIRA -> chame tiroUsuario(matrizInimiga, linha, coluna)
 
+        #  CHECAR VITORIA (ANTES da CPU atirar!):
+        #          - if barcoDestruido(matrizInimiga):
+        #                print "VITORIA"
+        #                break   (sai do loop)
 
+        #  A CPU ATIRA -> matrizUsuario = tiroCPU(matrizUsuario)
+        #          (guarde o retorno, igual fez no tiroUsuario)
 
-
-
-
-
-
+        #  CHECAR DERROTA:
+        #          - if barcoDestruido(matrizUsuario):
+        #                print "DERROTA"
+        #                break
 
 

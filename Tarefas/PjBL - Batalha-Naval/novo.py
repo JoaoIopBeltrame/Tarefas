@@ -181,7 +181,7 @@ def porNavio(tabuleiroUsuario, escolheNavio):
                 tabuleiroUsuario[linha + valorPosicao][coluna] = escolheNavio_INT
     
     return True
-
+    
     #fazer tratamento de coisas em ambos
 
 

@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cataratas do Iguaçu</title>
+
+    <style>
+      /* ====== Base ====== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Georgia, serif;
+        background: #0a2e2c;
+        color: #f1fbf8;
+        line-height: 1.7;
+      }
+
+      /* ====== Cabeçalho ====== */
+      header {
+        background: linear-gradient(135deg, #0a2e2c, #1f8a5a);
+        padding: 100px 20px;
+        text-align: center;
+      }
+      header h1 {
+        font-size: 3.5em;
+        margin-bottom: 15px;
+      }
+      header p {
+        font-size: 1.2em;
+        opacity: 0.9;
+      }
+
+      /* ====== Seções ====== */
+      section {
+        max-width: 900px;
+        margin: 60px auto;
+        padding: 0 20px;
+      }
+      h2 {
+        font-size: 2em;
+        color: #37c489;
+        border-bottom: 2px solid #37c489;
+        padding-bottom: 8px;
+        margin-bottom: 20px;
+      }
+      p {
+        margin-bottom: 15px;
+      }
+
+      /* ====== Galeria ====== */
+      .galeria {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 15px;
+      }
+      .galeria img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+      .galeria img:hover {
+        transform: scale(1.05);
+      }
+
+      /* ====== Vídeo ====== */
+      .video {
+        position: relative;
+        padding-bottom: 56.25%; /* proporção 16:9 */
+        height: 0;
+      }
+      .video iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 8px;
+      }
+
+      /* ====== Som ====== */
+      .som {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 25px;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      /* ====== Botões ====== */
+      button {
+        background: #37c489;
+        color: #0a2e2c;
+        border: none;
+        padding: 12px 28px;
+        font-size: 1em;
+        font-weight: bold;
+        border-radius: 25px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #2eb076;
+      }
+
+      /* ====== Quiz ====== */
+      .quiz {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 25px;
+        border-radius: 8px;
+      }
+      .quiz button {
+        display: block;
+        width: 100%;
+        margin: 8px 0;
+        background: #1f8a5a;
+        color: white;
+        text-align: left;
+        padding: 12px 16px;
+        border-radius: 6px;
+      }
+      .quiz button:hover {
+        background: #37c489;
+        color: #0a2e2c;
+      }
+      #resultado {
+        text-align: center;
+        font-size: 1.3em;
+        margin-top: 20px;
+      }
+
+      /* ====== Lightbox ====== */
+      #lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        cursor: pointer;
+      }
+      #lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 8px;
+      }
+
+      /* ====== Rodapé ====== */
+      footer {
+        text-align: center;
+        padding: 30px;
+        background: #061a19;
+        margin-top: 60px;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ====== Cabeçalho ====== -->
+    <header>
+      <h1>Cataratas do Iguaçu</h1>
+      <p>Foz do Iguaçu — Paraná, Brasil</p>
+    </header>
+
+    <!-- ====== Sobre ====== -->
+    <section>
+      <h2>Sobre as Cataratas</h2>
+      <p>
+        As Cataratas do Iguaçu são um conjunto de cerca de 275 quedas-d'água
+        localizadas no Rio Iguaçu, na fronteira entre Brasil e Argentina. Foram
+        eleitas uma das 7 Maravilhas Naturais do Mundo em 2011.
+      </p>
+      <p>
+        A queda mais famosa é a Garganta do Diabo, com aproximadamente 80 metros
+        de altura. O Parque Nacional do Iguaçu é Patrimônio Mundial da UNESCO
+        desde 1986.
+      </p>
+    </section>
+
+    <!-- ====== Galeria (imagens + interação) ====== -->
+    <section>
+      <h2>Galeria</h2>
+      <p>Clique em qualquer foto para ampliar.</p>
+      <div class="galeria">
+        <img
+          src="imagem/15339230815b6dcf09986ed_1533923081_3x2_md.jpg"
+          alt="Vista panorâmica"
+          onclick="abrir(this)"
+        />
+        <img src="imagem/images.jpg" alt="Outro ângulo" onclick="abrir(this)" />
+        <img
+          src="imagem/Garganta-do-Diabo-1024x546.jpg"
+          alt="Garganta do Diabo"
+          onclick="abrir(this)"
+        />
+        <img src="imagem/33ER926.jpg" alt="Arco-íris" onclick="abrir(this)" />
+        <img
+          src="imagem/por-do-sol-cataratas-do-iguacu.jpg"
+          alt="Fim de tarde"
+          onclick="abrir(this)"
+        />
+      </div>
+    </section>
+
+    <!-- ====== Vídeo ====== -->
+    <section>
+      <h2>Vídeo</h2>
+      <div class="video">
+        <iframe
+          src="https://www.youtube.com/embed/L483Me5ouXY"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- ====== Som ====== -->
+    <section>
+      <h2>Som das Cataratas</h2>
+      <div class="som">
+        <p>Ouça o barulho da água:</p>
+        <button id="botaoSom" onclick="tocarSom()">▶ Tocar</button>
+      </div>
+    </section>
+
+    <!-- ====== Quiz (interação) ====== -->
+    <section>
+      <h2>Quiz</h2>
+      <div class="quiz">
+        <p id="pergunta"></p>
+        <div id="opcoes"></div>
+        <p id="resultado"></p>
+      </div>
+    </section>
+
+    <!-- ====== Rodapé ====== -->
+    <footer>
+      <p>Projeto Acadêmico — PUCPR</p>
+      <p>Feito por JP, Caio, Gabriel e Miguel</p>
+    </footer>
+
+    <!-- ====== Lightbox (a foto ampliada) ====== -->
+    <div id="lightbox" onclick="fechar()">
+      <img id="lightboxImg" src="" alt="" />
+    </div>
+
+    <script>
+      /* ========== Lightbox (clique na foto) ========== */
+      function abrir(img) {
+        document.getElementById("lightboxImg").src = img.src;
+        document.getElementById("lightbox").style.display = "flex";
+      }
+      function fechar() {
+        document.getElementById("lightbox").style.display = "none";
+      }
+
+      /* ========== Som (gerado pelo navegador, sem arquivo) ==========
+       A gente cria ruído branco (números aleatórios) e passa por um
+       filtro grave — fica parecido com água caindo.                  */
+      let contexto, ganho;
+
+      function tocarSom() {
+        const botao = document.getElementById("botaoSom");
+
+        // primeira vez que clica: monta o som
+        if (!contexto) {
+          contexto = new AudioContext();
+
+          // 1) cria um buffer de 2 segundos com ruído aleatório
+          const buffer = contexto.createBuffer(
+            1,
+            contexto.sampleRate * 2,
+            contexto.sampleRate,
+          );
+          const dados = buffer.getChannelData(0);
+          for (let i = 0; i < dados.length; i++) {
+            dados[i] = Math.random() * 2 - 1;
+          }
+
+          // 2) toca esse ruído em loop infinito
+          const fonte = contexto.createBufferSource();
+          fonte.buffer = buffer;
+          fonte.loop = true;
+
+          // 3) filtro deixa o ruído mais grave (vira "som de água")
+          const filtro = contexto.createBiquadFilter();
+          filtro.type = "lowpass";
+          filtro.frequency.value = 900;
+
+          // 4) controle de volume (começa em 0 = mudo)
+          ganho = contexto.createGain();
+          ganho.gain.value = 0;
+
+          // 5) conecta tudo: fonte -> filtro -> volume -> caixa de som
+          fonte.connect(filtro);
+          filtro.connect(ganho);
+          ganho.connect(contexto.destination);
+          fonte.start();
+        }
+
+        // liga ou desliga
+        if (ganho.gain.value === 0) {
+          ganho.gain.value = 0.5;
+          botao.textContent = "⏸ Pausar";
+        } else {
+          ganho.gain.value = 0;
+          botao.textContent = "▶ Tocar";
+        }
+      }
+
+      /* ========== Quiz ========== */
+      const perguntas = [
+        {
+          q: "As Cataratas ficam na fronteira do Brasil com qual país?",
+          o: ["Argentina", "Paraguai", "Uruguai"],
+          c: 0,
+        },
+        {
+          q: "Qual a queda mais famosa do conjunto?",
+          o: ["Salto Floriano", "Garganta do Diabo", "Salto Santa Maria"],
+          c: 1,
+        },
+        {
+          q: "Em que ano foram eleitas Maravilha do Mundo?",
+          o: ["2007", "2011", "2016"],
+          c: 1,
+        },
+        {
+          q: "Quantas quedas formam o conjunto?",
+          o: ["Cerca de 100", "Cerca de 275", "Cerca de 500"],
+          c: 1,
+        },
+      ];
+
+      let atual = 0;
+      let acertos = 0;
+
+      function mostrarPergunta() {
+        // se acabou, mostra resultado
+        if (atual >= perguntas.length) {
+          document.getElementById("pergunta").textContent = "";
+          document.getElementById("opcoes").innerHTML = "";
+          document.getElementById("resultado").textContent =
+            "Você acertou " + acertos + " de " + perguntas.length + "!";
+          return;
+        }
+
+        const p = perguntas[atual];
+        document.getElementById("pergunta").textContent =
+          atual + 1 + ". " + p.q;
+
+        let html = "";
+        for (let i = 0; i < p.o.length; i++) {
+          html +=
+            '<button onclick="responder(' + i + ')">' + p.o[i] + "</button>";
+        }
+        document.getElementById("opcoes").innerHTML = html;
+      }
+
+      function responder(i) {
+        if (i === perguntas[atual].c) acertos++;
+        atual++;
+        mostrarPergunta();
+      }
+
+      mostrarPergunta();
+    </script>
+  </body>
+</html>

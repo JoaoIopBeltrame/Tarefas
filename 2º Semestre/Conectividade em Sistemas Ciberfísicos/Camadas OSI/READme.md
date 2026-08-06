@@ -1,5 +1,3 @@
-Aqui está o README adaptado para o seu código em Python, mantendo exatamente a mesma estrutura, estilo e formatação do exemplo que você enviou:
-
 # Simulador do Modelo OSI em Python
 
 Um programa em Python desenvolvido para simular o processo de descida (encapsulamento) de dados através das camadas do Modelo OSI. O sistema lê uma entrada de texto do usuário, passa a mensagem de forma sequencial pelas diferentes camadas de rede e, por fim, converte o dado para o formato binário, simulando a transmissão física.

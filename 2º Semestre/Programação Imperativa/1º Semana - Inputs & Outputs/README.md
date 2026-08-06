@@ -1,4 +1,4 @@
-<img width="771" height="792" alt="imagem" src="https://github.com/user-attachments/assets/7304a349-3438-40c6-af40-fa95745d5955" /># Leitor e Divisor de Números em C
+# Leitor e Divisor de Números em C
 
 Um programa em C desenvolvido para ler caracteres individuais via entrada padrão, convertê-los em números inteiros de 3 dígitos utilizando aritmética ASCII e realizar uma operação segura de divisão com formatação de saída de ponto flutuante.
 
@@ -74,6 +74,7 @@ O programa espera que você insira 6 caracteres (que podem ser separados por esp
 | `divisao` | `void` | Realiza a divisão entre os números e imprime o resultado formatado. |
 
 ---
+# **PROPOSTA**
 <img width="755" height="902" alt="imagem" src="https://github.com/user-attachments/assets/a1e5d8f6-ab77-4b00-a486-63e8d9f48336" />
 <img width="771" height="792" alt="imagem" src="https://github.com/user-attachments/assets/bd2b6e68-8f9d-45ea-82b6-75d8aa1f23f8" />
 ---

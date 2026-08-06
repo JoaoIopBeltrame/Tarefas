@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 void pegar_char(char* num[6]);
 int char_numero(char n1, char n2, char n3);
@@ -26,9 +27,12 @@ int main()
 
 void pegar_char(char* num[6])
 {
-    int i = 0;
-    for (i = 0; i < 6; i++){
-        scanf(" %c", num[i]); // o espcaço la ignora \n \t
+    char buffer[10]; // nao  6 pq o fgets vai guardar o \n e \0
+    if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+        buffer[strcspn(buffer, "\n")] = '\0';
+        for (int i = 0; i < 6; i++) {
+            *num[i] = buffer[i];
+        }
     }
 }
 int char_numero(char n1, char n2, char n3)
@@ -38,7 +42,7 @@ int char_numero(char n1, char n2, char n3)
 void divisao(int num1, int num2, float* resposta)
 {
     *resposta = (float)num1 / (float)num2;
-    printf("%8.3f\n", *resposta);
+    printf("%.3f\n", *resposta);
 }
 
 

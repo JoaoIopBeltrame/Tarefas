@@ -350,9 +350,7 @@ def main():
 
 {VERD}   Obrigado por jogar!{RE}
 {CI}   Desenvolvido por:{RE}
-{AZ}   Joao Beltrae{RE}
-{VERD}   Caio Alvez{RE}
-{AMA}   Gabriel Alasca{RE}''')
+{AZ}   Joao Beltrae{RE}''')
             time.sleep(2)
 
             if not jogar_novamente():

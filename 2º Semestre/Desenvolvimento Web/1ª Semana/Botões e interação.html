@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absolute Cinema</title>
+</head>
+<body>
+    
+    <h1>Absolute Cinema</h1>
+
+    <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=600&auto=format&fit=crop" alt="Cadeiras de Cinema Vermelhas" width="600">
+
+    <h2>Formulário de Cadastro e Compra</h2>
+    
+    <fieldset>
+        <legend>Dados Pessoais</legend>
+        
+        <label for="nome">Nome</label><br>
+        <input type="text" id="nome" placeholder="Digite seu nome" required><br><br>
+
+        <label for="email">E-mail</label><br>
+        <input type="email" id="email" placeholder="seu@email.com" required><br><br>
+
+        <label for="senha">Senha</label><br>
+        <input type="password" id="senha" required>
+    </fieldset>
+    <br>
+
+    <fieldset>
+        <legend>Detalhes da Reserva</legend>
+
+        <label for="ingressos">Quantidade de Ingressos</label><br>
+        <input type="number" id="ingressos" min="1" max="10"><br><br>
+
+        <label for="data-sessao">Data da Sessão</label><br>
+        <input type="date" id="data-sessao"><br><br>
+
+        <label for="filme">Selecione o Filme</label><br>
+        <select id="filme">
+            <option>Clube da Luta (1999)</option>
+            <option>Seven: Os Sete Pecados Capitais (1995)</option>
+            <option>A Rede Social (2010)</option>
+            <option>O Urso do Pó Branco (2023) </option>
+            <option>Rubber, O Pneu Assassino (2010) </option>
+            <option>Sharknado (2013) </option>
+        </select><br><br>
+
+        <p>Tipo de Ingresso</p>
+        <label>
+            <input type="radio" name="tipo-ingresso" value="meia"> Meia-Entrada
+        </label><br>
+        <label>
+            <input type="radio" name="tipo-ingresso" value="inteira" checked> Inteira
+        </label>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend>Adicionais e Preferências</legend>
+
+        <p>Comidas</p>
+        
+        <label>
+            <input type="checkbox" id="Pipoca-G"> Pipoca Grande
+            <br>
+            <input type="checkbox" id="Pipoca-M"> Pipoca Media
+            <br>
+            <input type="checkbox" id="Pipoca-P"> Pipoca Pequena
+            <br>
+        </label>
+        <p>Bebidas</p>
+        <label>
+            <input type="checkbox" id="Refrigerante"> Refrigerante 700ml 
+            <br> 
+            <input type="checkbox" id="Refrigerante-sem-açucar"> Refrigerante Sem Açucar 700ml
+        </label><br>
+        <label>
+            <input type="checkbox" id="Agua"> Água
+        </label>
+        <br><br>
+        
+        <label for="cor-ticket">Cor de personalização do seu ticket</label><br>
+        <input type="color" id="cor-ticket"><br><br>
+    </fieldset>
+
+    <br>
+
+    <button type="submit">Finalizar Reserva</button>
+    <button type="reset">Limpar Formulário</button>
+    
+</body>
+</html>

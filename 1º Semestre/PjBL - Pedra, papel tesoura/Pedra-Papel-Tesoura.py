@@ -477,7 +477,9 @@ elif entrada == '2':
 ╚══════════════════════════════════╝{RE}
 {VERD}  Obrigado por jogar!{RE}
 {CI}  Desenvolvido por:{RE}
-{AZ}  Joao Beltrae{RE}""")
+{AZ}   Joao Beltrae{RE}
+{VERD}   Caio Alvez{RE}
+{AMA}   Gabriel Alasca{RE}''')
                 jogar_novamente_flag = False
                 rodando = False
             else:

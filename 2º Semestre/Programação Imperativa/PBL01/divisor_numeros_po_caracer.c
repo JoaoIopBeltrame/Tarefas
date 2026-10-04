@@ -1,53 +1,53 @@
 #include <stdio.h>
-#include <string.h>
 
-void pegar_char(char* num[6]);
-int char_numero(char n1, char n2, char n3);
-void divisao(int num1, int num2, float* resposta);
-
-int main()
+typedef struct
 {
-    char n1, n2, n3, n4, n5, n6;
-    float resposta;
+    char num1[3];
+    char num2[3];
+} NumeroArray;
 
-    char* todos_char[6] = {&n1, &n2, &n3, &n4, &n5, &n6};
-    
-    printf("Digite 6 numeros (aperte Enter a cada digito):\n");
-    
-    pegar_char(todos_char);
-    
-    int num1 = char_numero(n1, n2, n3);
-    int num2 = char_numero(n4, n5, n6);
-    
-    if (num2 != 0) {
-        divisao(num1, num2, &resposta);
-    } else {
-        printf("Erro: Divisao por zero.\n");
+int main(void)
+{
+    NumeroArray numeroInpt;
+
+    puts("Digite os primeiros 3 numeros (num1):");
+    for (int i = 0; i < 3; i++)
+    {
+        scanf(" %c", numeroInpt.num1 + i);
     }
-    
+
+    puts("Digite os outros 3 numeros (num2):");
+    for (int i = 0; i < 3; i++)
+    {
+        scanf(" %c", numeroInpt.num2 + i);
+    }
+
+    int n1 = 0;
+    char *pNum1 = numeroInpt.num1; 
+    {
+        int digito = *pNum1 - '0';
+        n1 = (n1 * 10) + digito;
+        pNum1++; 
+    }
+
+    int n2 = 0;
+    char *pNum2 = numeroInpt.num2; 
+    for (int i = 0; i < 3; i++)
+    {
+        int digito = *pNum2 - '0';
+        n2 = (n2 * 10) + digito; 
+        pNum2++; 
+    }
+
+    if (n2 != 0)
+    {
+        float resposta = (float)n1 / (float)n2;
+        printf("\nCalculo: %d / %d = %.3f\n", n1, n2, resposta);
+    }
+    else
+    {
+        puts("\nErro: Divisao por zero!");
+    }
+
     return 0;
-}
-
-void pegar_char(char* num[6])
-{
-    char buffer[10];
-    
-    for (int i = 0; i < 6; i++) {
-        printf("Digite o %dº caractere: ", i + 1); 
-        if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
-            buffer[strcspn(buffer, "\n")] = '\0';
-            *num[i] = buffer[0]; 
-        }
-    }
-}
-
-int char_numero(char n1, char n2, char n3)
-{
-    return (n1 - '0') * 100 + (n2 - '0') * 10 + (n3 - '0');
-}
-
-void divisao(int num1, int num2, float* resposta)
-{
-    *resposta = (float)num1 / (float)num2;
-    printf("'Resultado da divisao: %.3f\n", *resposta);
 }

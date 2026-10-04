@@ -513,7 +513,7 @@ Complexidade de memória: O(N × M)
 
 <!-- Coloque aqui as imagens da proposta -->
 
-<img src="<img width="476" height="609" alt="image" src="https://github.com/user-attachments/assets/c9fef4b1-15d3-4702-90bf-ef0c651052ad" />
+<img src="https://github.com/user-attachments/assets/c9fef4b1-15d3-4702-90bf-ef0c651052ad" />
 " />
 
 

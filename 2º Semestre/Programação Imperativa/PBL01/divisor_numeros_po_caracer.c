@@ -23,30 +23,39 @@ int main(void)
     }
 
     int n1 = 0;
-    char *pNum1 = numeroInpt.num1; 
+    char *pNum1 = numeroInpt.num1;
+
+    for (int i = 0; i < 3; i++)
     {
         int digito = *pNum1 - '0';
+
         n1 = (n1 * 10) + digito;
-        pNum1++; 
+
+        pNum1++;
     }
 
     int n2 = 0;
-    char *pNum2 = numeroInpt.num2; 
+    char *pNum2 = numeroInpt.num2;
+
     for (int i = 0; i < 3; i++)
     {
         int digito = *pNum2 - '0';
-        n2 = (n2 * 10) + digito; 
-        pNum2++; 
+
+        n2 = (n2 * 10) + digito;
+
+        pNum2++;
     }
 
     if (n2 != 0)
     {
         float resposta = (float)n1 / (float)n2;
-        printf("\nCalculo: %d / %d = %.3f\n", n1, n2, resposta);
+
+        printf("Calculo: %d / %d = %.3f\n",
+               n1, n2, resposta);
     }
     else
     {
-        puts("\nErro: Divisao por zero!");
+        puts("Erro: Divisao por zero!\n");
     }
 
     return 0;

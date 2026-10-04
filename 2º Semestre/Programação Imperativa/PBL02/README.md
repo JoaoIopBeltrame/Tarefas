@@ -1,4 +1,4 @@
-# Katmandu — Verificador de Tempo de Sono em C - https://maratona.sbc.org.br/hist/2021/primeira-fase/maratona.pdf
+# Problema K - Katmandu — Verificador de Tempo de Sono em C - https://maratona.sbc.org.br/hist/2021/primeira-fase/maratona.pdf
 
 Um programa desenvolvido em **C** para determinar se uma pessoa consegue dormir por pelo menos **T minutos consecutivos** durante um voo, sem perder nenhuma das refeições servidas.
 

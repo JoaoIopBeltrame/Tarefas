@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+
+    background-color: #eef1f5;
+    color: #2b2d42;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+h1 {
+    margin-bottom: 24px;
+    font-size: 1.8rem;
+}
+
+form {
+    width: 100%;
+    max-width: 380px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.card,
+.calculadora {
+    background-color: #ffffff;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card h2,
+.calculadora h2 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+input[type="number"] {
+    width: 100%;
+
+    padding: 10px 12px;
+    margin-bottom: 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    font-size: 1rem;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #4361ee;
+}
+
+button {
+    cursor: pointer;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 0.95rem;
+}
+
+#btnComparar,
+#btnLimpar {
+    width: 100%;
+
+    padding: 10px;
+    margin-top: 6px;
+
+    background-color: #4361ee;
+    color: white;
+}
+
+#btnComparar:hover {
+    background-color: #3448c5;
+}
+
+#btnLimpar {
+    background-color: #ef476f;
+}
+
+#btnLimpar:hover {
+    background-color: #d63e60;
+}
+
+.calculadora {
+    display: flex;
+    flex-direction: column;
+}
+
+.operacoes {
+    display: flex;
+    gap: 8px;
+}
+
+.operacoes button {
+    flex: 1;
+
+    padding: 10px 0;
+
+    background-color: #edf2fb;
+    color: #2b2d42;
+
+    font-weight: bold;
+}
+
+.operacoes button:hover {
+    background-color: #d9e2f7;
+}
+
+
+/* RESULTADOS */
+
+p[id^="resultado"] {
+    margin-top: 12px;
+
+    font-weight: 600;
+    font-size: 1.05rem;
+
+    min-height: 1.2em;
+}

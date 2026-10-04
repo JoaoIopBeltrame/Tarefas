@@ -1,94 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Absolute Cinema</title>
-</head>
-<body>
-    
-    <h1>Absolute Cinema</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tarefa 1</title>
+  </head>
+  <body>
+    <form action="POST" id="posta">
+      <center>
+        <div>
+          <h1>Tarefa</h1>
+        </div>
 
-    <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=600&auto=format&fit=crop" alt="Cadeiras de Cinema Vermelhas" width="600">
+        <fieldset>
+          <legend>Cadastro</legend>
+          <br />
+          <label for="nome">Nome: </label>
+          <input
+            type="text"
+            id="nome"
+            placeholder="Nome aqui"
+            minlength="3"
+            maxlength="45"
+            required
+          />
+          <br /><br />
+          <label for="mail">Email: </label>
+          <input
+            type="text"
+            id="mail"
+            placeholder="Email aqui"
+            minlength="3"
+            maxlength="45"
+            required
+          />
+          <br /><br />
+          <label for="password">Seha: </label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Senha aqui"
+            minlength="3"
+            maxlength="45"
+            required
+          />
+          <br /><br />
+          <label for="cor">Cor do TICKET:</label>
+          <input type="color" id="cor" />
+        </fieldset>
+        <br />
+        <fieldset>
+          <legend>Comida</legend>
 
-    <h2>Formulário de Cadastro e Compra</h2>
-    
-    <fieldset>
-        <legend>Dados Pessoais</legend>
-        
-        <label for="nome">Nome</label><br>
-        <input type="text" id="nome" placeholder="Digite seu nome" required><br><br>
+          <input type="checkbox" />Refrigerante <br />
+          <select>
+            <option>Pepsi</option>
+            <option>Coca-Cola</option>
+            <option>Guaraná</option>
+          </select>
 
-        <label for="email">E-mail</label><br>
-        <input type="email" id="email" placeholder="seu@email.com" required><br><br>
+          <br /><br />
 
-        <label for="senha">Senha</label><br>
-        <input type="password" id="senha" required>
-    </fieldset>
-    <br>
+          <input type="checkbox" />Pipoca
+          <br />
+          <select>
+            <option>Grande</option>
+            <option>Média</option>
+            <option>Pequena</option>
+          </select>
+        </fieldset>
+        <br /><br />
+        <details>
+          <summary>Clique para ver mais informações</summary>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos at
+            dolorum quibusdam minima ea porro illo molestiae qui, deleniti
+            architecto. Totam consequuntur consectetur ea! Culpa molestiae ea
+            laborum beatae doloribus!
+          </p>
+        </details>
+        <br />
+        <p>Clique para ver opções de horarios</p>
+        <select>
+          <option>19:00</option>
+          <option>19:30</option>
+          <option>20:00</option>
+          <option>20:30</option>
+          <option>21:00</option>
+          <option>21:30</option>
+          <option>22:00</option>
+        </select>
+        <br /><br />
+        <details>
+          <summary>Ver filmes</summary>
+          <br />
+          <img
+            src="imagem/jurassic_park_lll.jpg"
+            height="225px"
+            width="150"
+            alt="Filme 1"
+          />
+          <img src="imagem/homem_aranha_ll.webp" width="150" alt="Filme 2" />
+          <img
+            src="imagem/DragonballEvolution.jpg"
+            height="225"
+            width="150"
+            alt="Filme 3"
+          />
+        </details>
+        <br /><br />
+        <input type="radio" name="filme" /> Jurassic Park
+        <input type="radio" name="filme" /> Homem-Aranha
+        <input type="radio" name="filme" /> Dragon Ball <br /><br />
+        <table>
+          <tr>
+            <th>Filme</th>
+            <th>Idade indicativa</th>
+            <th>Meia entrada</th>
+            <th>Combo promocional</th>
+          </tr>
 
-    <fieldset>
-        <legend>Detalhes da Reserva</legend>
+          <tbody>
+            <tr>
+              <td>
+                <img
+                  src="imagem/jurassic_park_lll.jpg"
+                  height="125"
+                  width="100"
+                  alt="Jurassic Park"
+                />
+              </td>
 
-        <label for="ingressos">Quantidade de Ingressos</label><br>
-        <input type="number" id="ingressos" min="1" max="10"><br><br>
+              <td>12 anos</td>
+              <td>R$ 15,00</td>
+              <td>Pipoca + Refrigerante</td>
+            </tr>
 
-        <label for="data-sessao">Data da Sessão</label><br>
-        <input type="date" id="data-sessao"><br><br>
+            <tr>
+              <td>
+                <img
+                  src="imagem/homem_aranha_ll.webp"
+                  height="125"
+                  width="100"
+                  alt="Homem-Aranha 2"
+                />
+              </td>
 
-        <label for="filme">Selecione o Filme</label><br>
-        <select id="filme">
-            <option>Clube da Luta (1999)</option>
-            <option>Seven: Os Sete Pecados Capitais (1995)</option>
-            <option>A Rede Social (2010)</option>
-            <option>O Urso do Pó Branco (2023) </option>
-            <option>Rubber, O Pneu Assassino (2010) </option>
-            <option>Sharknado (2013) </option>
-        </select><br><br>
+              <td>10 anos</td>
+              <td>R$ 15,00</td>
+              <td>Pipoca Grande + Refrigerante</td>
+            </tr>
 
-        <p>Tipo de Ingresso</p>
-        <label>
-            <input type="radio" name="tipo-ingresso" value="meia"> Meia-Entrada
-        </label><br>
-        <label>
-            <input type="radio" name="tipo-ingresso" value="inteira" checked> Inteira
-        </label>
-    </fieldset>
+            <tr>
+              <td>
+                <img
+                  src="imagem/DragonballEvolution.jpg"
+                  height="125"
+                  width="100"
+                  alt="Dragonball Evolution"
+                />
+              </td>
 
-    <br>
-
-    <fieldset>
-        <legend>Adicionais e Preferências</legend>
-
-        <p>Comidas</p>
-        
-        <label>
-            <input type="checkbox" id="Pipoca-G"> Pipoca Grande
-            <br>
-            <input type="checkbox" id="Pipoca-M"> Pipoca Media
-            <br>
-            <input type="checkbox" id="Pipoca-P"> Pipoca Pequena
-            <br>
-        </label>
-        <p>Bebidas</p>
-        <label>
-            <input type="checkbox" id="Refrigerante"> Refrigerante 700ml 
-            <br> 
-            <input type="checkbox" id="Refrigerante-sem-açucar"> Refrigerante Sem Açucar 700ml
-        </label><br>
-        <label>
-            <input type="checkbox" id="Agua"> Água
-        </label>
+              <td>10 anos</td>
+              <td>R$ 15,00</td>
+              <td>Pipoca + Refrigerante</td>
+            </tr>
+          </tbody>
+        </table>
         <br><br>
-        
-        <label for="cor-ticket">Cor de personalização do seu ticket</label><br>
-        <input type="color" id="cor-ticket"><br><br>
-    </fieldset>
-
-    <br>
-
-    <button type="submit">Finalizar Reserva</button>
-    <button type="reset">Limpar Formulário</button>
-    
-</body>
+        <button type="submit" width="250px" >Enviar</button>
+      </center>
+    </form>
+  </body>
 </html>

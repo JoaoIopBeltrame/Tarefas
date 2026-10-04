@@ -260,9 +260,6 @@ N
 # PROPOSTA
 
 <img src="<img width="550" height="599" alt="image" src="https://github.com/user-attachments/assets/fc0e9fbc-f777-4986-bff0-8e2af3b2a533" />
-" />
 <img src="<img width="581" height="166" alt="image" src="https://github.com/user-attachments/assets/b81330db-890a-402b-9d55-deb87d41d437" />
-" />
 <img src="<img width="561" height="182" alt="image" src="https://github.com/user-attachments/assets/03fedca4-fb88-4a83-9d16-b0244c3e084d" />
-" />
 ---

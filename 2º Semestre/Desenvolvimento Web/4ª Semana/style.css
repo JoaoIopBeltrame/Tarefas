@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    background-color: #eef1f5;
+    color: #333;
+
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+h1 {
+    color: #1b3a57;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #1b3a57;
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+
+/* TABELA */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background-color: white;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+
+    padding: 12px;
+
+    text-align: left;
+}
+
+th {
+    background-color: #1b3a57;
+    color: white;
+}
+
+
+/* TABELA ZEBRADA */
+
+tbody tr:nth-child(even) {
+    background-color: #e8eef3;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+tbody tr:hover {
+    background-color: #d9e5ee;
+}
+
+
+/* LISTA DE CARDS */
+
+#lista-cards {
+    display: flex;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 20px;
+}
+
+
+/* CARD */
+
+.card {
+    width: 210px;
+
+    background-color: white;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.20);
+}
+
+
+/* IMAGEM DO CARD */
+
+.card img {
+    width: 70px;
+    height: 70px;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    margin-bottom: 12px;
+}
+
+
+/* TEXTO DO CARD */
+
+.card h3 {
+    color: #1b3a57;
+
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 14px;
+
+    color: #666;
+
+    line-height: 1.4;
+}

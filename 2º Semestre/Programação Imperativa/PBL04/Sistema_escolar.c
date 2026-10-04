@@ -19,7 +19,7 @@ void imprimir_relatorio(InfoAluno* ptrr);
 int main(void)
 {
 	int quantidade = 3;
-	InfoAluno* Estudante = malloc(3 * 9);
+	InfoAluno* Estudante = malloc(3 * sizeof(InfoAluno));
 	if (Estudante == NULL) 
 	{
 		puts("Memoria insuficiente\n");

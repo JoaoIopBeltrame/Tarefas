@@ -2,6 +2,10 @@ function carregar() {
     fetch("http://localhost/tarefa2/index.php")
         .then(res => res.json())
         .then(dados => {
+            if (dados.length === 0) {
+                document.getElementById("corpo").innerHTML = '<tr><td colspan="3">Sem dados</td></tr>';
+                return;
+            }
             let html = '';
             dados.forEach(item => {
                 html += `<tr>

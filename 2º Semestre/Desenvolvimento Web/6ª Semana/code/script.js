@@ -1,5 +1,11 @@
+function escapar(valor) {
+    const div = document.createElement("div");
+    div.textContent = valor;
+    return div.innerHTML;
+}
+
 function carregar() {
-    fetch("http://localhost/tarefa2/index.php")
+    fetch("index.php")
         .then(res => res.json())
         .then(dados => {
             if (dados.length === 0) {
@@ -9,9 +15,9 @@ function carregar() {
             let html = '';
             dados.forEach(item => {
                 html += `<tr>
-                    <td>${item.nome}</td>
-                    <td>${item.idade}</td>
-                    <td>${item.timestamp}</td>
+                    <td>${escapar(item.nome)}</td>
+                    <td>${escapar(item.idade)}</td>
+                    <td>${escapar(item.timestamp)}</td>
                 </tr>`;
             });
             document.getElementById("corpo").innerHTML = html;
@@ -35,7 +41,7 @@ document.getElementById("btnEnviar").onclick = function() {
         idade: idade
     };
 
-    fetch("http://localhost/tarefa2/index.php", {
+    fetch("index.php", {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(dados)

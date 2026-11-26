@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         "idade" => $idade
     ];
 
-    $dados = file_get_contents("cadastro-dados.json");
+    $dados = file_exists("cadastro-dados.json") ? file_get_contents("cadastro-dados.json") : "[]";
     $lista = json_decode($dados, true);
 
     if(!is_array($lista)) {
